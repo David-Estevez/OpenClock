@@ -1,0 +1,171 @@
+Cmp-Mod V01 Created by CvPCB (2011-05-25)-stable date = Fri 09 Nov 2012 19:45:04 CET
+
+BeginCmp
+TimeStamp = /5097FF90;
+Reference = C1;
+ValeurCmp = 10_nF;
+IdModule  = CON-MUL;
+EndCmp
+
+BeginCmp
+TimeStamp = /509D4F04;
+Reference = C2;
+ValeurCmp = CPOL;
+IdModule  = CON-ELE;
+EndCmp
+
+BeginCmp
+TimeStamp = /5097A6B3;
+Reference = C3;
+ValeurCmp = 100nF;
+IdModule  = CON-MUL;
+EndCmp
+
+BeginCmp
+TimeStamp = /5097967D;
+Reference = C4;
+ValeurCmp = 22pF;
+IdModule  = CON-MUL;
+EndCmp
+
+BeginCmp
+TimeStamp = /50979684;
+Reference = C5;
+ValeurCmp = 22pF;
+IdModule  = CON-MUL;
+EndCmp
+
+BeginCmp
+TimeStamp = /509BE0EA;
+Reference = CT_LCD_1_DOC1;
+ValeurCmp = CT_LCD_1_DOC;
+IdModule  = OSHW-logo;
+EndCmp
+
+BeginCmp
+TimeStamp = /509806EA;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LED-3MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5098136C;
+Reference = ENC1;
+ValeurCmp = ROTATORY_ENCODER;
+IdModule  = SIL-5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5099908F;
+Reference = LCD1;
+ValeurCmp = GLCD;
+IdModule  = VASCH10x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /5097FFD4;
+Reference = P1;
+ValeurCmp = Power_Supply;
+IdModule  = Molex2P-R;
+EndCmp
+
+BeginCmp
+TimeStamp = /509AC7FB;
+Reference = P2;
+ValeurCmp = LCD_CON1;
+IdModule  = PIN_ARRAY_5x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /5097A5BE;
+Reference = P3;
+ValeurCmp = Serial_Port;
+IdModule  = CON1X4;
+EndCmp
+
+BeginCmp
+TimeStamp = /509AC888;
+Reference = P4;
+ValeurCmp = LCD_CON2;
+IdModule  = PIN_ARRAY_5x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /509AD065;
+Reference = P5;
+ValeurCmp = BUZZER;
+IdModule  = Jumper;
+EndCmp
+
+BeginCmp
+TimeStamp = /509AEC71;
+Reference = P6;
+ValeurCmp = ENC_CON;
+IdModule  = pin_array_3x2;
+EndCmp
+
+BeginCmp
+TimeStamp = /509806FE;
+Reference = R1;
+ValeurCmp = 680;
+IdModule  = RES14W;
+EndCmp
+
+BeginCmp
+TimeStamp = /509795FF;
+Reference = R2;
+ValeurCmp = 10K;
+IdModule  = RES14W;
+EndCmp
+
+BeginCmp
+TimeStamp = /509A4236;
+Reference = RV1;
+ValeurCmp = POT;
+IdModule  = POACCH;
+EndCmp
+
+BeginCmp
+TimeStamp = /509A497B;
+Reference = RV2;
+ValeurCmp = POT;
+IdModule  = POACCH;
+EndCmp
+
+BeginCmp
+TimeStamp = /509824EC;
+Reference = SP1;
+ValeurCmp = BUZZER;
+IdModule  = Jumper;
+EndCmp
+
+BeginCmp
+TimeStamp = /5097971F;
+Reference = SW1;
+ValeurCmp = Reset;
+IdModule  = Pulsador;
+EndCmp
+
+BeginCmp
+TimeStamp = /5096BCB4;
+Reference = U1;
+ValeurCmp = ATMEGA328-P;
+IdModule  = DIP-28__300_ELL;
+EndCmp
+
+BeginCmp
+TimeStamp = /50984243;
+Reference = U2;
+ValeurCmp = TMP36GZ;
+IdModule  = CON1X3;
+EndCmp
+
+BeginCmp
+TimeStamp = /50979675;
+Reference = X1;
+ValeurCmp = 16_MHz;
+IdModule  = XTAL-R;
+EndCmp
+
+EndListe

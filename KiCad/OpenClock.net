@@ -1,0 +1,214 @@
+# EESchema Netlist Version 1.1 created  Fri 09 Nov 2012 19:45:04 CET
+(
+ ( /5097FF90 CON-MUL C1 10_nF
+  ( 1 VCC )
+  ( 2 GND )
+ )
+ ( /509D4F04 CON-ELE C2 CPOL
+  ( 1 GND )
+  ( 2 VCC )
+ )
+ ( /5097A6B3 CON-MUL C3 100nF
+  ( 1 /RESET )
+  ( 2 N-000011 )
+ )
+ ( /5097967D CON-MUL C4 22pF
+  ( 1 N-000012 )
+  ( 2 GND )
+ )
+ ( /50979684 CON-MUL C5 22pF
+  ( 1 N-000006 )
+  ( 2 GND )
+ )
+ ( /509BE0EA OSHW-logo CT_LCD_1_DOC1 CT_LCD_1_DOC
+ )
+ ( /509806EA LED-3MM D1 LED
+  ( 1 VCC )
+  ( 2 N-000028 )
+ )
+ ( /5098136C SIL-5 ENC1 ROTATORY_ENCODER
+  ( 1 /PIN4 )
+  ( 2 GND )
+  ( 3 /INT0 )
+  ( 4 GND )
+  ( 5 /INT1 )
+ )
+ ( /5099908F VASCH10x2 LCD1 GLCD
+  ( 1 VCC )
+  ( 2 GND )
+  ( 3 /Vo )
+  ( 4 /PIN6(PWM) )
+  ( 5 /PIN7 )
+  ( 6 /PIN8 )
+  ( 7 /PIN9(PWM) )
+  ( 8 /PIN10(PWM) )
+  ( 9 /PIN11(PWM) )
+  ( 10 /PIN12 )
+  ( 11 /PIN13 )
+  ( 12 /A0 )
+  ( 13 /A1 )
+  ( 14 /RESET )
+  ( 15 /A2 )
+  ( 16 /A3 )
+  ( 17 /A4 )
+  ( 18 /VEE )
+  ( 19 GND )
+  ( 20 /K )
+ )
+ ( /5097FFD4 Molex2P-R P1 Power_Supply
+  ( 1 VCC )
+  ( 2 GND )
+ )
+ ( /509AC7FB PIN_ARRAY_5x2 P2 LCD_CON1
+  ( 1 VCC )
+  ( 2 GND )
+  ( 3 /Vo )
+  ( 4 /PIN6(PWM) )
+  ( 5 /PIN7 )
+  ( 6 /PIN8 )
+  ( 7 /PIN9(PWM) )
+  ( 8 /PIN10(PWM) )
+  ( 9 /PIN11(PWM) )
+  ( 10 /PIN12 )
+ )
+ ( /5097A5BE CON1X4 P3 Serial_Port
+  ( 1 GND )
+  ( 2 /TX )
+  ( 3 /RX )
+  ( 4 N-000011 )
+ )
+ ( /509AC888 PIN_ARRAY_5x2 P4 LCD_CON2
+  ( 1 /PIN13 )
+  ( 2 /A0 )
+  ( 3 /A1 )
+  ( 4 /RESET )
+  ( 5 /A2 )
+  ( 6 /A3 )
+  ( 7 /A4 )
+  ( 8 /VEE )
+  ( 9 GND )
+  ( 10 /K )
+ )
+ ( /509AD065 Jumper P5 BUZZER
+  ( 1 /PIN5(PWM) )
+  ( 2 GND )
+ )
+ ( /509AEC71 pin_array_3x2 P6 ENC_CON
+  ( 1 /INT1 )
+  ( 2 /INT0 )
+  ( 3 VCC )
+  ( 4 GND )
+  ( 5 /PIN4 )
+  ( 6 GND )
+ )
+ ( /509806FE RES14W R1 680
+  ( 1 N-000028 )
+  ( 2 GND )
+ )
+ ( /509795FF RES14W R2 10K
+  ( 1 VCC )
+  ( 2 /RESET )
+ )
+ ( /509A4236 POACCH RV1 POT
+  ( 1 VCC )
+  ( 2 /Vo )
+  ( 3 /VEE )
+ )
+ ( /509A497B POACCH RV2 POT
+  ( 1 /K )
+  ( 2 /K )
+  ( 3 GND )
+ )
+ ( /509824EC Jumper SP1 BUZZER
+  ( 1 /PIN5(PWM) )
+  ( 2 GND )
+ )
+ ( /5097971F Pulsador SW1 Reset
+  ( 1 /RESET )
+  ( 2 GND )
+ )
+ ( /5096BCB4 DIP-28__300_ELL U1 ATMEGA328-P
+  ( 1 /RESET )
+  ( 2 /RX )
+  ( 3 /TX )
+  ( 4 /INT0 )
+  ( 5 /INT1 )
+  ( 6 /PIN4 )
+  ( 7 VCC )
+  ( 8 GND )
+  ( 9 N-000006 )
+  ( 10 N-000012 )
+  ( 11 /PIN5(PWM) )
+  ( 12 /PIN6(PWM) )
+  ( 13 /PIN7 )
+  ( 14 /PIN8 )
+  ( 15 /PIN9(PWM) )
+  ( 16 /PIN10(PWM) )
+  ( 17 /PIN11(PWM) )
+  ( 18 /PIN12 )
+  ( 19 /PIN13 )
+  ( 20 VCC )
+  ( 21 VCC )
+  ( 22 GND )
+  ( 23 /A0 )
+  ( 24 /A1 )
+  ( 25 /A2 )
+  ( 26 /A3 )
+  ( 27 /A4 )
+  ( 28 /A5 )
+ )
+ ( /50984243 CON1X3 U2 TMP36GZ
+  ( 1 VCC )
+  ( 2 /A5 )
+  ( 3 GND )
+ )
+ ( /50979675 XTAL-R X1 16_MHz
+  ( 1 N-000012 )
+  ( 2 N-000006 )
+ )
+)
+*
+{ Allowed footprints by component:
+$component C1
+ SM*
+ C?
+ C1-1
+$endlist
+$component C3
+ SM*
+ C?
+ C1-1
+$endlist
+$component C4
+ SM*
+ C?
+ C1-1
+$endlist
+$component C5
+ SM*
+ C?
+ C1-1
+$endlist
+$component D1
+ LED-3MM
+ LED-5MM
+ LED-10MM
+ LED-0603
+ LED-0805
+ LED-1206
+ LEDV
+$endlist
+$component R1
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$component R2
+ R?
+ SM0603
+ SM0805
+ R?-*
+$endlist
+$endfootprintlist
+}
