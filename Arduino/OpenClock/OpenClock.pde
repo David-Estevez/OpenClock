@@ -57,12 +57,6 @@ void setup()
   GLCD.Init();
   GLCD.SelectFont(System5x7);
   
-  OpenClockMenu menu( GLCD );
-  menu.setTitle( "Init screen");
-
-  menu.show();
-  delay(5000);
-
   //-- Setup of encoder
   //------------------------------------
    pinMode(ENC_A, INPUT);
@@ -76,7 +70,7 @@ void setup()
 
   // encoder pin on interrupt 0 (pin 2)
   attachInterrupt(0, doEncoderA, CHANGE);
-// encoder pin on interrupt 1 (pin 3)
+  // encoder pin on interrupt 1 (pin 3)
   attachInterrupt(1, doEncoderB, CHANGE);
 
 /*
@@ -97,6 +91,16 @@ void loop()
 {  
   rotating = true;  // reset the debouncer
   
+    OpenClockMenu menu( GLCD, &encoderPos);
+    menu.setTitle( "Init screen");
+    menu.addChoice( "Option 1");
+    menu.addChoice( "Option 2");
+    for (int i = 0; i < 600; i++)
+    {
+
+  menu.show();
+  delay(100);
+    }
   //-- Menu screen state selection
   if (state == 0)
     state0();

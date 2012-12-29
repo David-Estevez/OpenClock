@@ -17,8 +17,8 @@
 class OpenClockMenu
 {
 public:
-    OpenClockMenu( const int& currentPos);
-    OpenClockMenu( glcd& myScreen , const int& currentPos);
+    OpenClockMenu( volatile unsigned int* currentPos);
+    OpenClockMenu( glcd& myScreen , volatile unsigned int* currentPos);
 
     void connectScreen( glcd& myScreen);
 
@@ -29,10 +29,10 @@ public:
 
 private:
     char title[W_SCREEN_SIZE];
-    char options[W_SCREEN_SIZE][H_SCREEN_SIZE];
+    char options[H_SCREEN_SIZE][W_SCREEN_SIZE];
 
     int numChoices;
-    int * currentChoice;
+    volatile unsigned int * currentChoice;
 
     glcd* myScreen;
 
