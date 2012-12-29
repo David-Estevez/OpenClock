@@ -8,6 +8,7 @@
 #include <glcd.h>
 #include <fonts/allFonts.h>
 #include "openclocktempsensor.h"
+#include "openclockmenu.h"
 
 /*
 //-- Libraries for RTC
@@ -31,7 +32,7 @@ volatile unsigned int encoderPos = 0;  // a counter for the dial
 unsigned int lastReportedPos = 1;   // change management
 static boolean rotating=false;      // debounce management
 
-boolean A_set = false;              
+boolean A_set = false;
 boolean B_set = false;
 
 //-- General clock definitions
@@ -49,7 +50,6 @@ int state = 0;
 
 OpenClockTempSensor temp(A5);
 
-
 void setup()
 {
   //-- Setup of graphic LCD
@@ -57,14 +57,20 @@ void setup()
   GLCD.Init();
   GLCD.SelectFont(System5x7);
   
+  OpenClockMenu menu( GLCD );
+  menu.setTitle( "Init screen");
+
+  menu.show();
+  delay(5000);
+
   //-- Setup of encoder
   //------------------------------------
    pinMode(ENC_A, INPUT);
    digitalWrite(ENC_A, HIGH);   // turn on pullup resistors
-   
-   pinMode(ENC_B, INPUT); 
+
+   pinMode(ENC_B, INPUT);
    digitalWrite(ENC_B, HIGH);   // turn on pullup resistors
-   
+
    pinMode(PUSH_SWITCH, INPUT);
    digitalWrite(PUSH_SWITCH, HIGH);   // turn on pullup resistors
 
@@ -72,7 +78,8 @@ void setup()
   attachInterrupt(0, doEncoderA, CHANGE);
 // encoder pin on interrupt 1 (pin 3)
   attachInterrupt(1, doEncoderB, CHANGE);
-  /*
+
+/*
   //-- Setup of RTC
   Wire.begin();
   RTC.begin();
@@ -102,7 +109,7 @@ void loop()
     
   delay(200);
   
-  if (digitalRead(PUSH_SWITCH ) == LOW )  {
+  if ( digitalRead( PUSH_SWITCH) == LOW )  {
     state = 0;
     delay(200);
   }
@@ -155,10 +162,10 @@ void state0()
         GLCD.SetFontColor(BLACK);
       }
       
-      if (digitalRead(PUSH_SWITCH ) == LOW )  
+      if ( digitalRead( PUSH_SWITCH) == LOW)
       {
         flag = false;
-        state = 1 + (encoderPos % (NUM_STATES-1));
+	state = 1 + (encoderPos % (NUM_STATES-1));
       }
       
       delay(200);    
@@ -180,7 +187,7 @@ void state1()
     // GLCD.print( temp);
      GLCD.print( temp.getTemp() );
      delay(100);
-     while ( digitalRead( PUSH_SWITCH ) == LOW )
+     while (  digitalRead( PUSH_SWITCH) == LOW)
      {
      tone( 5, 440, 5);
      delay(250);
@@ -325,6 +332,7 @@ void state3()
     delay(200);
 }
 
+
 //--Interrupt functions
 //----------------------------------------------------
 
@@ -333,12 +341,12 @@ void doEncoderA(){
   // debounce
   if ( rotating ) delay (1);  // wait a little until the bouncing is done
 
-  // Test transition, did things really change? 
+  // Test transition, did things really change?
   if( digitalRead(ENC_A) != A_set ) {  // debounce once more
     A_set = !A_set;
 
     // adjust counter + if A leads B
-    if ( A_set && !B_set ) 
+    if ( A_set && !B_set )
       encoderPos += 1;
 
     rotating = false;  // no more debouncing until loop() hits again
@@ -351,7 +359,7 @@ void doEncoderB(){
   if( digitalRead(ENC_B) != B_set ) {
     B_set = !B_set;
     //  adjust counter - 1 if B leads A
-    if( B_set && !A_set ) 
+    if( B_set && !A_set )
       encoderPos -= 1;
 
     rotating = false;

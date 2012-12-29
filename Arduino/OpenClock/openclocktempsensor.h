@@ -5,21 +5,28 @@
  * Date: Dec 27th, 2012
  */
 
+#ifndef OPENCLOCKTEMPSENSOR_H
+#define OPENCLOCKTEMPSENSOR_H
+
 #include <WProgram.h>
 
 class OpenClockTempSensor 
 {
 	public:
-	//! \brief Default constructor.
+	//! \brief  Creates a temperature sensor and assigns it a pin.
 	OpenClockTempSensor( const int pin );
 
 	//! \brief Obtain temperature from sensor.
 	double getTemp();
 
 	private:
-	//! \brief Stores sensor pin.
+	/*! 	\var int pin
+	 *	\brief Stores sensor pin.
+	 */
 	int pin;
 	
 	//! \brief Calculate temperature from readings.
 	double calculateTemp(int reading);
 };
+
+#endif // OPENCLOCKTEMPSENSOR_H
