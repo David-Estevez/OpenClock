@@ -25,6 +25,8 @@ public:
     void setTitle(const char * title);
     void addChoice( const char * choice);
 
+    int getNumChoices();
+
     int show();
 
 private:

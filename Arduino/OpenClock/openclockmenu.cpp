@@ -42,6 +42,13 @@ void OpenClockMenu::addChoice( const char * choice)
     }
 }
 
+
+int OpenClockMenu::getNumChoices()
+{
+    return numChoices;
+}
+
+
 int OpenClockMenu::show()
 {
     //-- Print window title:
