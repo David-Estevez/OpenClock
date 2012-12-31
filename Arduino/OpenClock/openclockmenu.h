@@ -13,6 +13,7 @@
 
 #include <WProgram.h>
 #include <glcd.h>
+#include <fonts/SystemFont5x7.h> 
 
 class OpenClockMenu
 {

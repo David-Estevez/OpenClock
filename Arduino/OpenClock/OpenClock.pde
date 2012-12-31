@@ -7,7 +7,7 @@
 //-- Libraries / Includes:
 //------------------------------------------------------------------
 #include <glcd.h>		      //-- Libraries for Graphic LCD
-#include <fonts/allFonts.h>	      //-- Fonts for Graphic LCD
+#include <fonts/SystemFont5x7.h>      //-- Fonts for Graphic LCD
 #include <Time.h>		      //-- Internal Clock Library
 
 #include "openclocktempsensor.h"      //-- Temp sensor class
@@ -288,14 +288,18 @@ void state3()
 void state4()
 {
     //-- Show clock
-    GLCD.ClearScreen();
-    GLCD.GotoXY(0,0);
-    GLCD.println( "Show clock\nComing soon.");
-
-    while( digitalRead( PUSH_SWITCH) == HIGH )
+    do
     {
-	delay(DELAY);
+	switch( clock_style )
+	{
+	    case 0: //--Digital clock
+	    default:
+		digital_clock( temp );
+	    break;
+	}
+	delay(200);
     }
+    while( digitalRead( PUSH_SWITCH) == HIGH );
 
     state = 0; //-- Main menu
 }
