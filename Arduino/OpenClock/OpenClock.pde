@@ -247,17 +247,10 @@ void state1()
 
 void state2()
 {
-      //-- Edit time & date
-      GLCD.ClearScreen();
-      GLCD.GotoXY(0,0);
-      GLCD.println( "Edit time & date screen\nComing soon.");
+    //-- Edit time & date
+    set_time_screen( encoderPos);
 
-      while( digitalRead( PUSH_SWITCH) == HIGH )
-      {
-	  delay(DELAY);
-      }
-
-      state = 1; //-- Setup menu
+    state = 1; //-- Setup menu
 }
 
 void state3()

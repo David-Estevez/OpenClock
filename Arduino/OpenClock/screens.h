@@ -6,7 +6,12 @@
 #include <fonts/fixednums15x31.h>
 #include <Time.h>
 
+#include "configuration.h"
 #include "openclocktempsensor.h"
+
+//-- Configuration screens:
+//-----------------------------------------------
+void set_time_screen(volatile unsigned int& encoderPos);
 
 //-- Clock screens:
 //------------------------------------------------
