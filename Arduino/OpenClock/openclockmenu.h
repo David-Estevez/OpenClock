@@ -2,7 +2,7 @@
  * OpenClock project
  *
  * Author: David Estévez
- * Date: Dec 29th, 2012
+ * Date: Jan 4th, 2013
  */
 
 #ifndef OPENCLOCKMENU_H

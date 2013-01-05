@@ -12,6 +12,7 @@
 
 #include "openclocktempsensor.h"      //-- Temp sensor class
 #include "openclockmenu.h"	      //-- GLCD menus
+#include "serialinterface.h"	      //-- Serial interface with computer
 
 #include "configuration.h"	      //-- Pin definitions, etc
 #include "screens.h"		      //-- Different screens for the clock
@@ -67,6 +68,7 @@ void setup()
   main_menu.setTitle( "OpenClock - by DEF");
   main_menu.addChoice( "Configuration");
   main_menu.addChoice( "Show clock");
+  main_menu.addChoice( "Serial interface");
 
   //-- Setup menu setup
   setup_menu.setTitle("OpenClock Setup");
@@ -119,6 +121,11 @@ void loop()
     case 4:
       //-- Show clock
       state4();
+      break;
+
+     case 5:
+      //-- Serial interface
+      state5();
       break;
 
     default:
@@ -197,6 +204,11 @@ void state0()
 	case 1:
 	    encoderPos = 0;
 	    state = 4;
+	    break;
+
+	case 2:
+	    encoderPos = 0;
+	    state = 5;
 	    break;
 
 	default:
@@ -293,6 +305,19 @@ void state4()
 	delay(200);
     }
     while( digitalRead( PUSH_SWITCH) == HIGH );
+
+    state = 0; //-- Main menu
+}
+
+void state5()
+{
+    GLCD.ClearScreen();
+    GLCD.CursorTo(0,0);
+    GLCD.println( "Serial interface mode");
+    serial_interface();
+   // while( digitalRead( PUSH_SWITCH) == HIGH ){
+//	delay(200);
+  //  }
 
     state = 0; //-- Main menu
 }

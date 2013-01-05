@@ -13,7 +13,7 @@
 
 //-- General clock definitions
 //-------------------------------------------------------------------
-#define NUM_STATES 4
+#define NUM_STATES 5
 #define DELAY 200
 
 #endif // CONFIGURATION_H
