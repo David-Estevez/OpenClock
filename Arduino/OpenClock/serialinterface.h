@@ -26,9 +26,26 @@
 
 
 //-- Functions
-void serial_interface();
-bool login();
+class OpenClockSerial
+{
+public:
+    OpenClockSerial();
+    OpenClockSerial( volatile unsigned int & encoderPos);
 
-void clearbuffer( char * buffer, int size);
+    void serial_interface();
+
+private:
+    char buffer[32];
+    volatile unsigned int * encoderPos;
+    volatile unsigned int prevEncoderPos;
+
+    bool login();
+
+    void read_command();
+    void configuration( char * command, int size  =32);
+    void interactive_console( char * command, int size = 32 );
+
+    void clearbuffer( int size = 32);
+};
 
 #endif // SERIALINTERFACE_H
