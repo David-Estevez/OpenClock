@@ -32,20 +32,22 @@ public:
     OpenClockSerial();
     OpenClockSerial( volatile unsigned int & encoderPos);
 
-    void serial_interface();
+    void connectEncoder( volatile unsigned int & encoderPos);
+
+    void run();
 
 private:
     char buffer[32];
     volatile unsigned int * encoderPos;
-    volatile unsigned int prevEncoderPos;
 
     bool login();
 
-    void read_command();
-    void configuration( char * command, int size  =32);
-    void interactive_console( char * command, int size = 32 );
+    void read_commands();
+    void configuration();
+    void interactive_console();
 
     void clearbuffer( int size = 32);
+    void read_serial();
 };
 
 #endif // SERIALINTERFACE_H

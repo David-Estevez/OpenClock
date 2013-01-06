@@ -11,15 +11,20 @@ void OpenClockSerial::OpenClockSerial(volatile unsigned int &encoderPos)
     this->encoderPos = &encoderPos;
 }
 
+void connectEncoder( volatile unsigned int & encoderPos)
+{
+    this->encoderPos = &encoderPos;
+}
 
-void OpenClockSerial::serial_interface()
+
+void OpenClockSerial::run()
 {
     //-- Start serial port
     Serial.begin( BAUD_RATE);
     Serial.flush();
 
     //-- Login:
-    int i = 0;
+    int i = 0;		//-- #attempts
 
     while ( i < 3 && !login())
 	i++;
@@ -34,12 +39,12 @@ void OpenClockSerial::serial_interface()
 	Serial.print( "\n\n");
 	Serial.println( MACHINE );
 
-	read_command();
-
-	Serial.println( "Disconected!");
+	read_commands();
     }
 
+
     //-- Close serial port
+    Serial.println( "Disconected!");
     Serial.end();
 }
 
@@ -60,20 +65,7 @@ bool OpenClockSerial::login()
     {
 	if (Serial.available() > 0 )
 	{
-	    //-- Wait for serial buffer to fill
-	    delay(20);
-
-	    //-- Clear buffer
-	    clearbuffer( buffer, 32);
-
-	    int j = 0;
-	    while ( Serial.available() && j < 32 )
-	    {
-		buffer[j] = Serial.read();
-		j++;
-	    }
-
-	    Serial.flush();
+	    read_serial();
 
 	    if ( strcmp( buffer, PASSWORD) == 0)
 		return true;
@@ -89,27 +81,12 @@ bool OpenClockSerial::login()
     return false;
 }
 
-void OpenClockSerial::read_command()
+void OpenClockSerial::read_commands()
 {
     //-- Wait for user input, key to abort:
     do
     {
-	if (Serial.available() > 0 )
-	{
-	    //-- Wait for serial buffer to fill
-	    delay(20);
-
-	    //-- Clear buffer
-	    clearbuffer( buffer, 32);
-
-	    int j = 0;
-	    while ( Serial.available() && j < 32 )
-	    {
-		buffer[j] = Serial.read();
-		j++;
-	    }
-
-	    Serial.flush();
+	    read_serial();
 
 	    //-- Decode the instruction:
 	    if ( strstr( buffer, "config") != NULL )
@@ -124,24 +101,23 @@ void OpenClockSerial::read_command()
 	    {
 		break;
 	    }
-	}
     }
     while ( digitalRead( PUSH_SWITCH) == HIGH );
 
 }
 
-void OpenClockSerial::configuration( char * command, int size )
+void OpenClockSerial::configuration( )
 {
     GLCD.println( "Remote config");
     while ( digitalRead( PUSH_SWITCH) == HIGH )
     {}
 }
 
-void OpenClockSerial::interactive_console( char * command, int size )
+void OpenClockSerial::interactive_console( )
 {
     int prevEncoderPos = encoderPos;
     
-    GLCD.println( "Interactive\nterminal");
+    GLCD.println( "Interactive terminal");
     GLCD.ClearScreen();
     GLCD.CursorTo(0,0);
 
@@ -150,20 +126,7 @@ void OpenClockSerial::interactive_console( char * command, int size )
         //-- Command recieved
 	if (Serial.available() > 0 )
 	{
-	    //-- Wait for serial buffer to fill
-	    delay(20);
-
-	    //-- Clear buffer
-	    clearbuffer( buffer, 32);
-
-	    int j = 0;
-	    while ( Serial.available() && j < 31 )
-	    {
-		buffer[j] = Serial.read();
-		j++;
-	    }
-            
-	    Serial.flush();
+	    read_serial();
 
             if ( strstr( buffer, "!clr") != NULL )
             {
@@ -203,3 +166,23 @@ void OpenClockSerial::clearbuffer( int size)
 }
 
 
+void OpenClockSerial::read_serial()
+{
+    if (Serial.available() > 0 )
+    {
+	//-- Wait for serial buffer to fill
+	delay(20);
+
+	//-- Clear buffer
+	clearbuffer( buffer, 32);
+
+	int j = 0;
+	while ( Serial.available() && j < 32 )
+	{
+	    buffer[j] = Serial.read();
+	    j++;
+	}
+
+	Serial.flush();
+    }
+}

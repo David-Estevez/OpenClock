@@ -110,7 +110,7 @@ void digital_clock( OpenClockTempSensor& temp)
     //-----------------------------------
     GLCD.CursorTo(15, 0);
     GLCD.print( temp.getTemp(), 1) ;
-    GLCD.println( "C");
+    GLCD.println( " C");
     
     //-- Print date:
     //-----------------------------------
@@ -149,4 +149,8 @@ void digital_clock( OpenClockTempSensor& temp)
       GLCD.print("0");
     GLCD.print( second() , DEC);
     GLCD.SelectFont( SystemFont5x7 );
+    
+    //-- Line
+    GLCD.DrawLine( 0, 54, 127, 54);
+
   }
